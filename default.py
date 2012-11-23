@@ -494,7 +494,7 @@ def startVideo(url):
       if len(sub["url"]) > 0:
         common.log("Skipping unknown subtitle: " + sub["url"])
 
-  if hlsvideo and HLS_STRIP:
+  if hlsvideo:
       videoUrl = hlsStrip(videoUrl)
 
   if videoUrl:
@@ -517,10 +517,7 @@ def startVideo(url):
 def hlsStrip(videoUrl):
     """
     This function removes all streams except
-    the 1024x576 or 704x396 stream from an .m3u8 HLS
-    playlist file. This is to ensure highest available
-    quality on devices like ATV2 that do not handle
-    avc1.77.30 well yet.
+    the highest available quality.
     Note! The for-loop only works because of the ordering
     in the .m3u8 file, so it is fragile.
     """
@@ -530,7 +527,7 @@ def hlsStrip(videoUrl):
     hlsurl = ""
     foundheader = False
     for line in ufile.readlines():
-        if ("1024x576" in line) or ("704x396" in line):
+        if ("#" in line):
             header = line
             foundheader = True
             continue

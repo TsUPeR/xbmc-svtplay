@@ -7,7 +7,4 @@
     <setting id="showsubtitles" type="bool" label="30501" default="false" />
     <setting id="debug" type="bool" label="30500" default="false" />
   </category>
-  <category label="40002">
-    <setting id="hlsstrip" type="bool" label="30505" default="false" />
-  </category>
 </settings>
