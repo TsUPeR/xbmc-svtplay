@@ -588,7 +588,7 @@ def convertChar(char):
 params = common.getParameters(sys.argv[2])
 
 mode = params.get("mode")
-url = urllib.unquote_plus(params.get("url", ""))
+url = urllib.unquote_plus(urllib.unquote_plus(params.get("url", "")))
 page = params.get("page")
 letter = params.get("letter")
 index = params.get("index")
